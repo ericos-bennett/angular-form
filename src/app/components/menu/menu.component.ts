@@ -8,12 +8,6 @@ import { Textbox, Radio, Checkboxes, Dropdown } from 'src/types';
 })
 export class MenuComponent implements OnInit {
 
-  specialRequests: Textbox = {
-    id: 'specialRequests',
-    title: 'Any special requests?',
-    placeholder: ''
-  }
-
   main: Radio = {
     id: 'main',
     title: 'Please select your main',
@@ -30,6 +24,42 @@ export class MenuComponent implements OnInit {
     id: 'doneness',
     title: 'How would you like your steak?',
     options: ['rare', 'medium', 'well done']
+  }
+
+  burgerSide: Radio = {
+    id: 'side',
+    title: 'Which side would you like?',
+    options: ['fries', 'salad']
+  }
+
+  steakSide: Radio = {
+    id: 'side',
+    title: 'Which side would you like?',
+    options: ['salad', 'baked potato']
+  }
+
+  friesSize: Dropdown = {
+    id: 'friesSize',
+    title: 'What size fries would you like?',
+    options: ['small', 'large']
+  }
+
+  dressing: Dropdown = {
+    id: 'dressing',
+    title: 'Which dressing would you like?',
+    options: ['caesar', 'balsamic']
+  }
+
+  potatoCount: Textbox = {
+    id: 'potatoCount',
+    title: 'How many potatoes would you like?',
+    placeholder: ''
+  }
+
+  specialRequests: Textbox = {
+    id: 'specialRequests',
+    title: 'Any special requests?',
+    placeholder: ''
   }
 
   constructor() { }

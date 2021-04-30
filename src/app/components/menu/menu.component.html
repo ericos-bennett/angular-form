@@ -1,6 +1,18 @@
-<p>menu works!</p>
-<app-radio [item]="main"></app-radio>
-<app-checkboxes [item]="condiments"></app-checkboxes>
-<app-dropdown [item]="doneness"></app-dropdown>
-<br>
-<app-textbox [item]="specialRequests"></app-textbox>
+<form>
+  <app-radio [item]="main"></app-radio>
+  <!-- Burger -->
+  <app-checkboxes [item]="condiments" *ngIf="true"></app-checkboxes>
+  <app-radio [item]="burgerSide"></app-radio>
+  <app-dropdown [item]="friesSize"></app-dropdown>
+  <app-dropdown [item]="dressing"></app-dropdown>
+  <!-- Steak -->
+  <app-dropdown [item]="doneness"></app-dropdown>
+  <app-radio [item]="steakSide"></app-radio>
+  <app-dropdown [item]="dressing"></app-dropdown>
+  <app-textbox [item]="potatoCount"></app-textbox>
+  <!-- Either -->
+  <app-textbox [item]="specialRequests"></app-textbox>
+  <br>
+  <button>Add to Cart</button>
+</form>
+
