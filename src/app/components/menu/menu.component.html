@@ -1,6 +1,6 @@
-{{ diagnostic }}
-<br>
-<button type="button" *ngIf="!ordering" (click)="newOrder()">Order Something</button>
+<div class="row justify-content-center">
+  <button class="btn btn-primary" type="button" *ngIf="!ordering" (click)="newOrder()">Add to Order</button>
+</div>
 <form *ngIf="ordering">
   <!-- Main -->
   <app-radio [item]="main" [order]="order"></app-radio>
@@ -11,14 +11,14 @@
   <app-radio [item]="burgerSide" [order]="order" *ngIf="order.main === 'Burger'"></app-radio>
   <app-radio [item]="steakSide" [order]="order" *ngIf="order.main === 'Steak'"></app-radio>
   <!-- Side Modifier -->
-  <app-dropdown [item]="friesSize" [order]="order" *ngIf="order.side === 'Fries'"></app-dropdown>
+  <app-dropdown [item]="friesSize" [order]="order" *ngIf="order.side === 'Fries' && order.main === 'Burger'"></app-dropdown>
   <app-dropdown [item]="dressing" [order]="order" *ngIf="order.side === 'Salad'"></app-dropdown>
-  <app-textbox [item]="potatoCount" [order]="order" *ngIf="order.side === 'Baked Potato'"></app-textbox>
+  <app-textbox [item]="potatoCount" [order]="order" *ngIf="order.side === 'Baked Potato' && order.main === 'Steak'"></app-textbox>
   <!-- Special Requests and Add to Cart -->
   <div *ngIf="order.friesSize || order.dressing || order.potatoCount">
     <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
     <br>
     <br>
-    <button type="button" (click)="addToCart()">Add to Cart</button>
+    <button type="button" class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
   </div>
 </form>

@@ -31,5 +31,12 @@ export class CartService {
     this.cart = this.cart.filter(meal => meal.id !== id);
   }
 
+  placeOrder() {
+    // Send order to API here
+    console.log('Cart order for API', this.cart);
+
+    this.cart = [];
+  }
+
   constructor() { }
 }

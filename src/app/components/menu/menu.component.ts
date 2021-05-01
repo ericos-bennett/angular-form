@@ -74,7 +74,6 @@ export class MenuComponent implements OnInit {
           let condiments = [];
           for (let condiment in this.order.condiments) {
             if (this.order.condiments[condiment]) {
-              console.log(condiment);
               condiments.push(condiment);
             }
           }
