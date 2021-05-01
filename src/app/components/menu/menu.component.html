@@ -1,19 +1,23 @@
 <form>
   {{ diagnostic }}
+  <!-- Main -->
   <app-radio [item]="main" [order]="order"></app-radio>
-  <!-- Burger -->
-  <app-checkboxes [item]="condiments" [order]="order" *ngIf="true"></app-checkboxes>
-  <app-radio [item]="burgerSide" [order]="order"></app-radio>
-  <app-dropdown [item]="friesSize" [order]="order"></app-dropdown>
-  <app-dropdown [item]="dressing" [order]="order"></app-dropdown>
-  <!-- Steak -->
-  <app-dropdown [item]="doneness" [order]="order"></app-dropdown>
-  <app-radio [item]="steakSide" [order]="order"></app-radio>
-  <app-dropdown [item]="dressing" [order]="order"></app-dropdown>
-  <app-textbox [item]="potatoCount" [order]="order"></app-textbox>
-  <!-- Either -->
-  <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
-  <br>
-  <button>Add to Cart</button>
+  <!-- Main Modifier -->
+  <app-checkboxes [item]="condiments" [order]="order" *ngIf="order.main === 'Burger'"></app-checkboxes>
+  <app-dropdown [item]="doneness" [order]="order" *ngIf="order.main === 'Steak'"></app-dropdown>
+  <!-- Side -->
+  <app-radio [item]="burgerSide" [order]="order" *ngIf="order.main === 'Burger'"></app-radio>
+  <app-radio [item]="steakSide" [order]="order" *ngIf="order.main === 'Steak'"></app-radio>
+  <!-- Side Modifier -->
+  <app-dropdown [item]="friesSize" [order]="order" *ngIf="order.side === 'Fries'"></app-dropdown>
+  <app-dropdown [item]="dressing" [order]="order" *ngIf="order.side === 'Salad'"></app-dropdown>
+  <app-textbox [item]="potatoCount" [order]="order" *ngIf="order.side === 'Baked Potato'"></app-textbox>
+  <!-- Special Requests and Add to Cart -->
+  <div *ngIf="order.friesSize || order.dressing || order.potatoCount">
+    <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
+    <br>
+    <br>
+    <button type="button" (click)="addToCart()">Add to Cart</button>
+  </div>
 </form>
 

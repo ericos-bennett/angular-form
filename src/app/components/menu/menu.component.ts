@@ -18,52 +18,88 @@ export class MenuComponent implements OnInit {
   condiments: Checkboxes = {
     id: 'condiments',
     title: 'What toppings would you like?',
-    options: ['ketchup', 'mustard', 'lettuce', 'tomato']
+    options: ['Ketchup', 'Mustard', 'Lettuce', 'Tomato']
   }
 
   doneness: Dropdown = {
     id: 'doneness',
     title: 'How would you like your steak?',
-    options: ['rare', 'medium', 'well done']
+    options: ['Rare', 'Medium', 'Well Done']
   }
 
   burgerSide: Radio = {
     id: 'side',
     title: 'Which side would you like?',
-    options: ['fries', 'salad']
+    options: ['Fries', 'Salad']
   }
 
   steakSide: Radio = {
     id: 'side',
     title: 'Which side would you like?',
-    options: ['salad', 'baked potato']
+    options: ['Salad', 'Baked Potato']
   }
 
   friesSize: Dropdown = {
     id: 'friesSize',
     title: 'What size fries would you like?',
-    options: ['small', 'large']
+    options: ['Small', 'Large']
   }
 
   dressing: Dropdown = {
     id: 'dressing',
     title: 'Which dressing would you like?',
-    options: ['caesar', 'balsamic']
+    options: ['Caesar', 'Balsamic']
   }
 
   potatoCount: Textbox = {
     id: 'potatoCount',
     title: 'How many potatoes would you like?',
-    placeholder: ''
+    pattern: /^(0|\+?[1-9]\d*)$/
   }
 
   specialRequests: Textbox = {
     id: 'specialRequests',
     title: 'Any special requests?',
-    placeholder: ''
   }
 
   order = new Meal('', '', {}, '', '', '', 0, '');
+
+  addToCart() {
+
+    const getMainModifier = (main: string) => {
+      switch (main) {
+        case 'Burger':
+          return this.order.condiments;
+        case 'Steak':
+          return this.order.doneness;
+        default:
+          return '';
+      }
+    };
+
+    const getSideModifier = (side: string) => {
+      switch (side) {
+        case 'Fries':
+          return this.order.friesSize;
+        case 'Salad':
+          return this.order.dressing;
+        case 'Baked Potato':
+          return this.order.potatoCount;
+        default:
+          return '';
+      }
+    }
+
+    const meal = {
+      main: this.order.main,
+      mainModifier: getMainModifier(this.order.main),
+      side: this.order.side,
+      sideModifier: getSideModifier(this.order.side),
+      specialRequests: this.order.specialRequests
+    }
+    console.log(meal);
+
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.order); }

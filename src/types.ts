@@ -1,7 +1,7 @@
 export type Textbox = {
   id: string,
   title: string,
-  placeholder: string
+  pattern?: RegExp
 }
 
 export type Dropdown = {
