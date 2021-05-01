@@ -7,7 +7,7 @@ export class Order {
     public doneness?: string,
     public friesSize?: string,
     public dressing?: string,
-    public potatoCount?: number,
+    public potatoCount?: string,
     public specialRequests?: string
   ) { }
 

@@ -1,7 +1,14 @@
 <div class="row justify-content-center">
-  <button class="btn btn-primary" type="button" *ngIf="!ordering" (click)="newOrder()">Add to Order</button>
+  <button
+    class="btn btn-primary"
+    type="button"
+    *ngIf="!ordering"
+    (click)="newOrder()"
+  >
+    Add to Order
+  </button>
 </div>
-<form *ngIf="ordering">
+<form *ngIf="ordering" (ngSubmit)="addToCart()" #menuForm="ngForm">
   <!-- Main -->
   <app-radio [item]="main" [order]="order"></app-radio>
   <!-- Main Modifier -->
@@ -15,9 +22,9 @@
   <app-dropdown [item]="dressing" [order]="order" *ngIf="order.side === 'Salad'"></app-dropdown>
   <app-textbox [item]="potatoCount" [order]="order" *ngIf="order.side === 'Baked Potato' && order.main === 'Steak'"></app-textbox>
   <!-- Special Requests and Add to Cart -->
-  <div *ngIf="order.friesSize || order.dressing || order.potatoCount">
+  <div *ngIf="order.side === 'Fries' && order.friesSize || order.side === 'Salad' && order.dressing || order.side === 'Baked Potato' && order.potatoCount">
     <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
     <br>
-    <button type="button" class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!menuForm.form.valid">Add to Cart</button>
   </div>
 </form>

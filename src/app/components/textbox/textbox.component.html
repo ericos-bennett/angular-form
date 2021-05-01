@@ -1,4 +1,18 @@
 <label>
   <h4>{{ item.title }}</h4>
-  <input type="text" [(ngModel)]="order[item.id]" id="{{ item.id }}" name="{{ item.id }}" pattern="{{ item.pattern }}">
+  <input
+    type="text"
+    [(ngModel)]="order[item.id]"
+    name="{{ item.id }}"
+    id="{{ item.id }}"
+    pattern="{{ item.pattern }}"
+    [attr.required]="item.required || null"
+    #input="ngModel"
+  >
 </label>
+<div
+  [hidden]="input.valid"
+  class="alert alert-danger"
+>
+  {{ item.errormsg }}
+</div>

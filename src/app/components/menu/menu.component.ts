@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
   doneness: Dropdown = {
     id: 'doneness',
     title: 'How would you like your steak?',
-    options: ['Rare', 'Medium', 'Well Done']
+    options: ['Rare', 'Medium', 'Well Done'],
   }
 
   burgerSide: Radio = {
@@ -54,8 +54,10 @@ export class MenuComponent implements OnInit {
 
   potatoCount: Textbox = {
     id: 'potatoCount',
-    title: 'How many potatoes would you like?',
-    pattern: /^(0|\+?[1-9]\d*)$/
+    title: 'How many potatoes would you like? Up to 5 per meal.',
+    pattern: '^[0-5]$',
+    required: true,
+    errormsg: "Please choose how many potatoes you'd like, with a number from 0 to 5."
   }
 
   specialRequests: Textbox = {
@@ -64,7 +66,7 @@ export class MenuComponent implements OnInit {
   }
 
   ordering = false;
-  order = new Order('', '', {}, '', '', '', 0, '');
+  order = new Order('', '', {}, '', '', '', '', '');
 
   addToCart() {
 
@@ -79,7 +81,7 @@ export class MenuComponent implements OnInit {
           }
           return condiments.join(', ');
         case 'Steak':
-          return this.order.doneness;
+          return this.order.doneness || 'No Preference';
         default:
           return '';
       }
@@ -109,7 +111,7 @@ export class MenuComponent implements OnInit {
 
     // Reset the menu form
     this.ordering = false;
-    this.order = new Order('', '', {}, '', '', '', 0, '');
+    this.order = new Order('', '', {}, '', '', '', '', '');
 
   }
 

@@ -1,13 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Radio, Order } from 'src/types';
+import { Order, Dropdown } from 'src/types';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
 })
 export class DropdownComponent implements OnInit {
-  @Input() item!: Radio;
+  @Input() item!: Dropdown;
   @Input() order!: any;
 
   constructor() { }

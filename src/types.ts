@@ -1,7 +1,9 @@
 export type Textbox = {
   id: string,
   title: string,
-  pattern?: RegExp
+  pattern?: RegExp | string,
+  required?: boolean,
+  errormsg?: string
 }
 
 export type Dropdown = {
@@ -19,7 +21,7 @@ export type Checkboxes = {
 export type Radio = {
   id: string,
   title: string,
-  options: string[]
+  options: string[],
 }
 
 export type Order = {
@@ -29,7 +31,7 @@ export type Order = {
   side: string,
   friesSize?: string,
   dressing?: string,
-  potatoCount?: number,
+  potatoCount?: string,
   specialRequests?: string
 }
 
@@ -39,16 +41,5 @@ export type Meal = {
   mainModifier?: string | { [key: string]: string; },
   side: string,
   sideModifier?: string | number,
-  specialRequests?: string
-}
-
-export type ValidOrder = {
-  main: 'burger' | 'steak',
-  condiments?: ('ketchup' | 'mustard' | 'lettuce' | 'tomato')[],
-  doneness?: 'rare' | 'medium' | 'well done',
-  side: 'fries' | 'salad' | 'baked potato',
-  friesSize?: 'small' | 'large',
-  dressing?: 'caesar' | 'balsamic',
-  potatoCount?: number,
   specialRequests?: string
 }
