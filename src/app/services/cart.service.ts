@@ -28,6 +28,7 @@ export class CartService {
   }
 
   removeMeal(id: number) {
+    console.log(id);
     this.cart = this.cart.filter(meal => meal.id !== id);
   }
 

@@ -18,7 +18,6 @@
   <div *ngIf="order.friesSize || order.dressing || order.potatoCount">
     <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
     <br>
-    <br>
     <button type="button" class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
   </div>
 </form>
