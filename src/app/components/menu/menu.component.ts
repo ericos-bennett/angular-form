@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Textbox, Radio, Checkboxes, Dropdown } from 'src/types';
-import { Meal } from '../../Models';
+import { CartService } from 'src/app/services/cart.service';
+import { Textbox, Radio, Checkboxes, Dropdown, Meal } from 'src/types';
+import { Order } from '../../Models';
 
 @Component({
   selector: 'app-menu',
@@ -62,14 +63,22 @@ export class MenuComponent implements OnInit {
     title: 'Any special requests?',
   }
 
-  order = new Meal('', '', {}, '', '', '', 0, '');
+  ordering = false;
+  order = new Order('', '', {}, '', '', '', 0, '');
 
   addToCart() {
 
     const getMainModifier = (main: string) => {
       switch (main) {
         case 'Burger':
-          return this.order.condiments;
+          let condiments = [];
+          for (let condiment in this.order.condiments) {
+            if (this.order.condiments[condiment]) {
+              console.log(condiment);
+              condiments.push(condiment);
+            }
+          }
+          return condiments.join(', ');
         case 'Steak':
           return this.order.doneness;
         default:
@@ -90,21 +99,29 @@ export class MenuComponent implements OnInit {
       }
     }
 
-    const meal = {
+    const meal: Meal = {
       main: this.order.main,
       mainModifier: getMainModifier(this.order.main),
       side: this.order.side,
       sideModifier: getSideModifier(this.order.side),
       specialRequests: this.order.specialRequests
     }
-    console.log(meal);
+    this.cart.addMeal(meal);
 
+    // Reset the menu form
+    this.ordering = false;
+    this.order = new Order('', '', {}, '', '', '', 0, '');
+
+  }
+
+  newOrder() {
+    this.ordering = true;
   }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.order); }
 
-  constructor() { }
+  constructor(public cart: CartService) {}
 
   ngOnInit(): void {
   }

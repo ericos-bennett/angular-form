@@ -9,6 +9,7 @@ import { TextboxComponent } from './components/textbox/textbox.component';
 import { CheckboxesComponent } from './components/checkboxes/checkboxes.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { RadioComponent } from './components/radio/radio.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RadioComponent } from './components/radio/radio.component';
     CheckboxesComponent,
     DropdownComponent,
     RadioComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

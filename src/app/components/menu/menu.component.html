@@ -1,5 +1,7 @@
-<form>
-  {{ diagnostic }}
+{{ diagnostic }}
+<br>
+<button type="button" *ngIf="!ordering" (click)="newOrder()">Order Something</button>
+<form *ngIf="ordering">
   <!-- Main -->
   <app-radio [item]="main" [order]="order"></app-radio>
   <!-- Main Modifier -->
@@ -20,4 +22,3 @@
     <button type="button" (click)="addToCart()">Add to Cart</button>
   </div>
 </form>
-

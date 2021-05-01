@@ -33,6 +33,15 @@ export type Order = {
   specialRequests?: string
 }
 
+export type Meal = {
+  id?: number,
+  main: string,
+  mainModifier?: string | { [key: string]: string; },
+  side: string,
+  sideModifier?: string | number,
+  specialRequests?: string
+}
+
 export type ValidOrder = {
   main: 'burger' | 'steak',
   condiments?: ('ketchup' | 'mustard' | 'lettuce' | 'tomato')[],

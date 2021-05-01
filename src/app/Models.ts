@@ -1,4 +1,4 @@
-export class Meal {
+export class Order {
 
   constructor(
     public main: string,

@@ -1,0 +1,22 @@
+<h3>Your Order</h3>
+<p *ngIf="(cart.cart$ | async)?.length === 0">No items in the cart yet</p>
+<table *ngIf="(cart.cart$ | async)?.length !== 0">
+  <thead>
+    <tr>
+      <th scope="col">Main</th>
+      <th scope="col">Main Modifier</th>
+      <th scope="col">Side</th>
+      <th scope="col">Side Modifier</th>
+      <th scope="col">Special Requests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let meal of cart.cart$ | async">
+      <td>{{ meal.main }}</td>
+      <td>{{ meal.mainModifier }}</td>
+      <td>{{ meal.side }}</td>
+      <td>{{ meal.sideModifier }}</td>
+      <td>{{ meal.specialRequests }}</td>
+    </tr>
+  </tbody>
+</table>
