@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Textbox, Radio, Checkboxes, Dropdown } from 'src/types';
+import { Meal } from '../../Models';
 
 @Component({
   selector: 'app-menu',
@@ -61,6 +62,11 @@ export class MenuComponent implements OnInit {
     title: 'Any special requests?',
     placeholder: ''
   }
+
+  order = new Meal('', '', {}, '', '', '', 0, '');
+
+  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify(this.order); }
 
   constructor() { }
 

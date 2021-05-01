@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Radio } from 'src/types';
+import { Radio, Order } from 'src/types';
 
 @Component({
   selector: 'app-dropdown',
@@ -8,6 +8,7 @@ import { Radio } from 'src/types';
 })
 export class DropdownComponent implements OnInit {
   @Input() item!: Radio;
+  @Input() order!: any;
 
   constructor() { }
 

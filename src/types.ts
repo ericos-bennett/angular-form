@@ -21,3 +21,25 @@ export type Radio = {
   title: string,
   options: string[]
 }
+
+export type Order = {
+  main: string,
+  condiments?: string[],
+  doneness?: string,
+  side: string,
+  friesSize?: string,
+  dressing?: string,
+  potatoCount?: number,
+  specialRequests?: string
+}
+
+export type ValidOrder = {
+  main: 'burger' | 'steak',
+  condiments?: ('ketchup' | 'mustard' | 'lettuce' | 'tomato')[],
+  doneness?: 'rare' | 'medium' | 'well done',
+  side: 'fries' | 'salad' | 'baked potato',
+  friesSize?: 'small' | 'large',
+  dressing?: 'caesar' | 'balsamic',
+  potatoCount?: number,
+  specialRequests?: string
+}

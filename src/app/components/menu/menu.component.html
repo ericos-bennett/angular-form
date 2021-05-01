@@ -1,17 +1,18 @@
 <form>
-  <app-radio [item]="main"></app-radio>
+  {{ diagnostic }}
+  <app-radio [item]="main" [order]="order"></app-radio>
   <!-- Burger -->
-  <app-checkboxes [item]="condiments" *ngIf="true"></app-checkboxes>
-  <app-radio [item]="burgerSide"></app-radio>
-  <app-dropdown [item]="friesSize"></app-dropdown>
-  <app-dropdown [item]="dressing"></app-dropdown>
+  <app-checkboxes [item]="condiments" [order]="order" *ngIf="true"></app-checkboxes>
+  <app-radio [item]="burgerSide" [order]="order"></app-radio>
+  <app-dropdown [item]="friesSize" [order]="order"></app-dropdown>
+  <app-dropdown [item]="dressing" [order]="order"></app-dropdown>
   <!-- Steak -->
-  <app-dropdown [item]="doneness"></app-dropdown>
-  <app-radio [item]="steakSide"></app-radio>
-  <app-dropdown [item]="dressing"></app-dropdown>
-  <app-textbox [item]="potatoCount"></app-textbox>
+  <app-dropdown [item]="doneness" [order]="order"></app-dropdown>
+  <app-radio [item]="steakSide" [order]="order"></app-radio>
+  <app-dropdown [item]="dressing" [order]="order"></app-dropdown>
+  <app-textbox [item]="potatoCount" [order]="order"></app-textbox>
   <!-- Either -->
-  <app-textbox [item]="specialRequests"></app-textbox>
+  <app-textbox [item]="specialRequests" [order]="order"></app-textbox>
   <br>
   <button>Add to Cart</button>
 </form>

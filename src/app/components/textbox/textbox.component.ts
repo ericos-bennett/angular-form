@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Textbox } from 'src/types';
+import { Textbox, Order } from 'src/types';
 
 @Component({
   selector: 'app-textbox',
@@ -8,6 +8,7 @@ import { Textbox } from 'src/types';
 })
 export class TextboxComponent implements OnInit {
   @Input() item!: Textbox;
+  @Input() order!: any;
 
   constructor() { }
 

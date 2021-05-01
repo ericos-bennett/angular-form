@@ -1,6 +1,6 @@
 <h4>{{ item.title }}</h4>
 
 <div *ngFor="let option of item.options">
-  <input type="checkbox" id="{{ option }}" name="{{ option }}" value="true">
+  <input type="checkbox" [(ngModel)]="order[item.id][option]" id="{{ option }}" name="{{ option }}">
   <label for="{{ option }}">{{ option }}</label>
 </div>

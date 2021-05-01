@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Checkboxes } from 'src/types';
+import { Checkboxes, Order } from 'src/types';
 
 @Component({
   selector: 'app-checkboxes',
@@ -8,6 +8,7 @@ import { Checkboxes } from 'src/types';
 })
 export class CheckboxesComponent implements OnInit {
   @Input() item!: Checkboxes;
+  @Input() order!: Order;
 
   constructor() { }
 

@@ -1,4 +1,4 @@
 <label>
   <h4>{{ item.title }}</h4>
-  <input type="text" id="{{ item.id }}" name="{{ item.id }}" required>
+  <input type="text" [(ngModel)]="order[item.id]" id="{{ item.id }}" name="{{ item.id }}" required>
 </label>
