@@ -1,5 +1,5 @@
 <div class="container">
   <app-header></app-header>
-  <app-menu class="container"></app-menu>
-  <app-cart></app-cart>
+  <app-menu class="container" [ordering]="ordering" (updateOrdering)="updateOrderingHandler($event)"></app-menu>
+  <app-cart [ordering]="ordering" (updateOrdering)="updateOrderingHandler($event)"></app-cart>
 </div>

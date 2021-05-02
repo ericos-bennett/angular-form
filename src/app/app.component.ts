@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,11 @@ import { CartService } from './services/cart.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  ordering = false;
+
+  updateOrderingHandler(ordering: boolean) {
+    this.ordering = ordering;
+  }
 
 }

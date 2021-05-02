@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Textbox, Radio, Checkboxes, Dropdown, Meal } from 'src/types';
 import { Order } from '../../Models';
@@ -9,6 +9,8 @@ import { Order } from '../../Models';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Input() ordering!: boolean;
+  @Output() updateOrdering = new EventEmitter<boolean>();
 
   main: Radio = {
     id: 'main',
@@ -65,7 +67,6 @@ export class MenuComponent implements OnInit {
     title: 'Any special requests?',
   }
 
-  ordering = false;
   order = new Order('', '', {}, '', '', '', '', '');
 
   addToCart() {
@@ -79,6 +80,7 @@ export class MenuComponent implements OnInit {
               condiments.push(condiment);
             }
           }
+          if (condiments.length === 0) return 'No Condiments';
           return condiments.join(', ');
         case 'Steak':
           return this.order.doneness || 'No Preference';
@@ -110,17 +112,17 @@ export class MenuComponent implements OnInit {
     this.cart.addMeal(meal);
 
     // Reset the menu form
-    this.ordering = false;
     this.order = new Order('', '', {}, '', '', '', '', '');
+    this.updateOrdering.emit(false);
 
   }
 
   newOrder() {
-    this.ordering = true;
+    this.updateOrdering.emit(true);
   }
 
   // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.order); }
+  get diagnostic() { return JSON.stringify(this.ordering); }
 
   constructor(public cart: CartService) {}
 
