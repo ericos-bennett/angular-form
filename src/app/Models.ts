@@ -12,9 +12,3 @@ export class Order {
   ) { }
 
 }
-
-export class Cart {
-
-
-
-}

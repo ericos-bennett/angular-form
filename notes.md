@@ -1,4 +1,0 @@
-- Add delete icon + functionality w/ service
-- Add validation (e.g. # of potatoes) + error messages if incorrect
-- Clean up UI
-- Clean up code
